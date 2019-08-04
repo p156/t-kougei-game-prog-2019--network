@@ -38,7 +38,7 @@ int main(void)
 
 		char send_data[1024];
 		scanf_s("%s", send_data, 1024);
-		if (send(s, send_data, strlen(send_data) + 1, 0) < 0) {
+		if (send(s, send_data, strlen(send_data) + 1, 0) == SOCKET_ERROR) {
 			printf("送信エラー\n");
 		}
 
@@ -47,7 +47,7 @@ int main(void)
 
 		// サーバからデータを受信
 		char buffer[1024];
-		if (recv(s, buffer, sizeof(buffer), 0) < 0) {
+		if (recv(s, buffer, sizeof(buffer), 0) == SOCKET_ERROR) {
 			printf("受信エラー\n");
 		}
 		printf("応答がきました: %s\n", buffer);
